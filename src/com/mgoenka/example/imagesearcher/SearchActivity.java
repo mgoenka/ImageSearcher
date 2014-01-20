@@ -203,7 +203,8 @@ public class SearchActivity extends Activity {
 	            if (etQuery.length() == 0) {
 	            	btnSearch.setEnabled(false);
 	            } else {
-	            	btnSearch.setEnabled(true);  //otherwise enable
+	            	btnSearch.setEnabled(true);
+	            	sendSearchQuery();
 	            }
 	        }
 
