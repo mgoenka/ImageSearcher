@@ -13,7 +13,9 @@
     <string name="image_type">Image Type</string>
     <string name="site_filter">Site Filter</string>
     <string name="searching_for">Searching for</string>
+    <string name="all">All</string>
     <string name="none">None</string>
+    <string name="filter_applied">Filter Applied</string>
     
     <string-array name="array_size">
         <item>All</item>

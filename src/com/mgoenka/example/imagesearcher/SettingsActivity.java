@@ -1,21 +1,37 @@
 package com.mgoenka.example.imagesearcher;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends Activity implements OnItemSelectedListener {
+	int filterSize = 0;
+	int filterColor = 0;
+	int filterType = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Bundle extras = getIntent().getExtras();
+		
+		filterSize = extras.getInt("size");
+		filterColor = extras.getInt("color");
+		filterType = extras.getInt("type");
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		
 		Spinner sSize = (Spinner) findViewById(R.id.sSize);
 		Spinner sColor = (Spinner) findViewById(R.id.sColor);
 		Spinner sType = (Spinner) findViewById(R.id.sType);
+		
+		sSize.setOnItemSelectedListener(this);
+		sColor.setOnItemSelectedListener(this);
+		sType.setOnItemSelectedListener(this);
 
 		ArrayAdapter<CharSequence> aaSize = ArrayAdapter.createFromResource(this,
 		        R.array.array_size, android.R.layout.simple_spinner_item);
@@ -34,15 +50,42 @@ public class SettingsActivity extends Activity {
 		sColor.setAdapter(aaColor);
 		sType.setAdapter(aaType);
 		
-		//TextView tvLabel = (TextView) findViewById(R.id.tvLabel);
-		//tvLabel.setText(getIntent().getStringExtra("label"));
+		sSize.setSelection(filterSize);
+		sColor.setSelection(filterColor);
+		sType.setSelection(filterType);
+	}
+
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		int spinnerId = parent.getId();
+		
+		switch (spinnerId) {
+		case R.id.sSize:
+			filterSize = pos;
+			break;
+		case R.id.sColor:
+			filterColor = pos;
+			break;
+		case R.id.sType:
+			filterType = pos;
+			break;
+		default:
+		}
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.settings, menu);
-		return true;
+	public void onNothingSelected(AdapterView<?> parent) {
+		// Another interface callback
 	}
 
+	@Override
+	public void onBackPressed() {
+		Intent i = new Intent();
+		
+		i.putExtra("size", filterSize);
+		i.putExtra("color", filterColor);
+		i.putExtra("type", filterType);
+		
+		setResult(RESULT_OK, i);
+		finish();
+	}
 }
