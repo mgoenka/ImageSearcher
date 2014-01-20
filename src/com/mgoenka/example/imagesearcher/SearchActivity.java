@@ -53,6 +53,16 @@ public class SearchActivity extends Activity {
 				startActivity(i);
 			}
 		});
+		
+		gvResults.setOnScrollListener(new EndlessScrollListener() {
+		    @Override
+		    public void onLoadMore(int page, int totalItemsCount) {
+	            // Triggered only when new data needs to be appended to the list
+	            // Add whatever code is needed to append new items to your AdapterView
+		        customLoadMoreDataFromApi(page); 
+	            // or customLoadMoreDataFromApi(totalItemsCount); 
+		    }
+        });
 	}
 
 	@Override
@@ -222,5 +232,11 @@ public class SearchActivity extends Activity {
 	    if (etQuery.length() == 0) {
 	    	btnSearch.setEnabled(false);
 	    }
-	} 
+	}
+	
+	public void customLoadMoreDataFromApi(int offset) {
+        // This method probably sends out a network request and appends new data items to your adapter. 
+        // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
+        // Deserialize API response and then construct new objects to append to the adapter
+    }
 }
