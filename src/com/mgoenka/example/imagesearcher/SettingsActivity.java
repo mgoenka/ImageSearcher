@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class SettingsActivity extends Activity implements OnItemSelectedListener {
@@ -53,6 +54,9 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 		sSize.setSelection(filterSize);
 		sColor.setSelection(filterColor);
 		sType.setSelection(filterType);
+		
+		EditText etSite = (EditText) findViewById(R.id.etSite);
+		etSite.setText(getIntent().getStringExtra("site"));
 	}
 
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -84,6 +88,7 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 		i.putExtra("size", filterSize);
 		i.putExtra("color", filterColor);
 		i.putExtra("type", filterType);
+		i.putExtra("site", ((EditText) findViewById(R.id.etSite)).getText().toString());
 		
 		setResult(RESULT_OK, i);
 		finish();

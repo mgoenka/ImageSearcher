@@ -31,6 +31,7 @@ public class SearchActivity extends Activity {
 	int filterSize = 0;
 	int filterColor = 0;
 	int filterType = 0;
+	String filterSite = null;
 	private final int REQUEST_CODE = 1;
 
 	@Override
@@ -141,6 +142,10 @@ public class SearchActivity extends Activity {
 			}
 		}
 		
+		if (filterSite != null) {
+			query += "&as_sitesearch=" + filterSite;
+		}
+		
 		AsyncHttpClient client = new AsyncHttpClient();
 		
 		client.get("https://ajax.googleapis.com/ajax/services/search/images?"
@@ -166,6 +171,7 @@ public class SearchActivity extends Activity {
 		i.putExtra("size", filterSize);
 		i.putExtra("color", filterColor);
 		i.putExtra("type", filterType);
+		i.putExtra("site", filterSite);
 		startActivityForResult(i, REQUEST_CODE);
 	}
 	
@@ -177,6 +183,7 @@ public class SearchActivity extends Activity {
 	        filterSize = extras.getInt("size");
 	        filterColor = extras.getInt("color");
 	        filterType = extras.getInt("type");
+	        filterSite = data.getStringExtra("site");
 	    }
 	}
 }
