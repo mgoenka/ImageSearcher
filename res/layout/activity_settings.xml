@@ -15,7 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="@string/image_size"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvColor"
@@ -25,7 +25,7 @@
         android:layout_below="@+id/tvSize"
         android:layout_marginTop="25dp"
         android:text="@string/color_filter"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvType"
@@ -35,7 +35,7 @@
         android:layout_below="@+id/tvColor"
         android:layout_marginTop="25dp"
         android:text="@string/image_type"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvSite"
@@ -45,7 +45,7 @@
         android:layout_below="@+id/tvType"
         android:layout_marginTop="25dp"
         android:text="@string/site_filter"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/etSite"
