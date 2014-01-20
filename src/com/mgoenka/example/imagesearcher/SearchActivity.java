@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,9 +64,14 @@ public class SearchActivity extends Activity {
 		etQuery = (EditText) findViewById(R.id.etQuery);
 		gvResults = (GridView) findViewById(R.id.gvResults);
 		btnSearch = (Button) findViewById(R.id.btnSearch);
+		
+		watcher(etQuery, btnSearch);
+	}
+	public void onImageSearch(View v) {
+		sendSearchQuery();
 	}
 	
-	public void onImageSearch(View v) {
+	public void sendSearchQuery() {
 		String query = Uri.encode(etQuery.getText().toString());
 		
 		if (filterSize > 0) {
@@ -185,5 +192,30 @@ public class SearchActivity extends Activity {
 	        filterType = extras.getInt("type");
 	        filterSite = data.getStringExtra("site");
 	    }
+	    
+	    sendSearchQuery();
 	}
+	
+	protected void watcher(final EditText etQuery,final Button btnSearch)
+	{
+	    etQuery.addTextChangedListener(new TextWatcher() {
+	        public void afterTextChanged(Editable s) { 
+	            if (etQuery.length() == 0) {
+	            	btnSearch.setEnabled(false);
+	            } else {
+	            	btnSearch.setEnabled(true);  //otherwise enable
+	            }
+	        }
+
+	        public void beforeTextChanged(CharSequence s, int start, int count, int after){
+	        }
+	        
+	        public void onTextChanged(CharSequence s, int start, int before, int count){
+	        }
+	    }); 
+	    
+	    if (etQuery.length() == 0) {
+	    	btnSearch.setEnabled(false);
+	    }
+	} 
 }
