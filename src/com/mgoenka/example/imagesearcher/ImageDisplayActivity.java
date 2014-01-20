@@ -14,6 +14,7 @@ public class ImageDisplayActivity extends Activity {
 		setContentView(R.layout.activity_image_display);
 		ImageResult result = (ImageResult) getIntent().getSerializableExtra("result");
 		SmartImageView ivImage = (SmartImageView) findViewById(R.id.ivResult);
+		setTitle(result.getTitle());
 		ivImage.setImageUrl(result.getFullUrl());
 	}
 

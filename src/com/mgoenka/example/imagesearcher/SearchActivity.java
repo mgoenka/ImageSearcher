@@ -10,8 +10,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -62,7 +62,7 @@ public class SearchActivity extends Activity {
 	
 	public void onImageSearch(View v) {
 		String query = etQuery.getText().toString();
-		Toast.makeText(this, "Searching for " + query, Toast.LENGTH_SHORT)
+		Toast.makeText(this, getString(R.string.searching_for) + " '" + query + "'", Toast.LENGTH_SHORT)
 				.show();
 		AsyncHttpClient client = new AsyncHttpClient();
 		
@@ -77,11 +77,17 @@ public class SearchActivity extends Activity {
 							imageResults.clear();
 							imageAdapter.addAll(ImageResult
 									.fromJSONArray(imageJsonResults));
-							Log.d("DEBUG", imageResults.toString());
 						} catch (JSONException e) {
 							e.printStackTrace();
 						}
 					}
 				});
+	}
+	
+	public void onSettings(MenuItem mi) {
+		Intent i = new Intent(this, SettingsActivity.class);
+		//i.putExtra("label", "Settings");
+		//i.putExtra("int", 5);
+		startActivity(i);
 	}
 }

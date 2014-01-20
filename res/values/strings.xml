@@ -6,6 +6,45 @@
     <string name="search">Search</string>
     <string name="enter_search_term">Enter Search Term</string>
     <string name="title_activity_image_display">ImageDisplayActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="advanced_search_options">Advanced Search Options</string>
+    <string name="image_size">Image Size</string>
+    <string name="color_filter">Color Filter</string>
+    <string name="image_type">Image Type</string>
+    <string name="site_filter">Site Filter</string>
+    <string name="searching_for">Searching for</string>
+    <string name="none">None</string>
+    
+    <string-array name="array_size">
+        <item>All</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item>Extra Large</item>
+    </string-array>
 
+    <string-array name="array_color">
+        <item>None</item>
+        <item>Black</item>
+        <item>Blue</item>
+        <item>Brown</item>
+        <item>Gray</item>
+        <item>Green</item>
+        <item>Orange</item>
+        <item>Pink</item>
+        <item>Purple</item>
+        <item>Red</item>
+        <item>Teal</item>
+        <item>White</item>
+        <item>Yellow</item>
+    </string-array>
+
+    <string-array name="array_type">
+        <item>All</item>
+        <item>Face</item>
+        <item>Photo</item>
+        <item>Clipart</item>
+        <item>Lineart</item>
+    </string-array>
+    
 </resources>

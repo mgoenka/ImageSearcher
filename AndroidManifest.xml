@@ -28,6 +28,10 @@
             android:name="com.mgoenka.example.imagesearcher.ImageDisplayActivity"
             android:label="@string/title_activity_image_display" >
         </activity>
+        <activity
+            android:name="com.mgoenka.example.imagesearcher.SettingsActivity"
+            android:label="@string/advanced_search_options" >
+        </activity>
     </application>
 
 </manifest>
