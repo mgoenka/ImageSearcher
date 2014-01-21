@@ -41,8 +41,7 @@ public class ImageResult implements Serializable {
 		return this.thumbUrl;
 	}
 
-	public static ArrayList<ImageResult> fromJSONArray(
-			JSONArray array) {
+	public static ArrayList<ImageResult> fromJSONArray(JSONArray array) {
 		ArrayList<ImageResult> results = new ArrayList<ImageResult>();
 		for (int i = 0; i < array.length(); i++) {
 			try {
