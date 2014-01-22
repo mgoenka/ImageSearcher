@@ -217,6 +217,7 @@ public class SearchActivity extends Activity {
 	            	btnSearch.setEnabled(false);
 	            } else {
 	            	btnSearch.setEnabled(true);
+	            	sendSearchQuery(0);
 	            }
 	        }
 
